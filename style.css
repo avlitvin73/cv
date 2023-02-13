@@ -166,6 +166,10 @@ a {
   width: 70%;
 }
 
+.second {
+  margin-top: -1rem;
+}
+
 .text-about {
   padding: 0 1rem 0 0;
 }
