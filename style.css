@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+.ref {
+  transform: scale(1.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+}
+
+nav a, nav div {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+body {
+  background-color: #E0E0E0;
+  font-family: 'Nunito', sans-serif;
+  color: #707070
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: .8rem;
+  margin-bottom: 1rem;
+}
+
+.phone-number {
+  font-size: .7rem;
+}
+
+ul {
+  position: relative;
+  left: 1rem;
+  margin-top: .3rem;
+}
+
+li {
+  font-size: .8rem;
+  margin-bottom: .3rem;
+}
+
+aside {
+  width: 30%;
+}
+
+footer,
+header,
+.personality {
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+header,
+footer {
+  min-width: 680px;
+}
+
+.personality {
+  background-color: #fff;
+  line-height: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #404040;
+}
+
+.container {
+  width: 595px;
+/*   height: 842px; */
+  height: 989px; 
+  background-color: #fff;
+  padding: 3.3rem;
+  padding-right: 2rem;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+.personality {
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+  position: relative;
+}
+
+.personality h1 {
+  display: block;
+  color: #000;
+  width: 63%;
+  font-size: 2.3rem;
+  position: absolute;
+  left: 0;
+}
+
+.personality h1 strong {
+  color: #BC3055;
+}
+
+.photo {
+  width: 270px;
+  height: 270px;
+  background-image: url('photo.png');
+  background-size: cover;
+  transform: scale(1.2, 1.2);
+  position: relative;
+  right: -30px;
+  
+}
+
+.photo:before {
+  content: '';
+  display: block;
+  border-top: 55px solid transparent;
+  border-right: 300px solid #fff;
+  transform: translateY(220px);
+}
+
+.photo:after {
+  content: '';
+  display: block;
+  border-top: 6px solid #DD2855;
+  transform: rotate(-10deg) translate(-30px,188px) scale(1.1);
+}
+
+.personality:before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 0px;
+  border-top: 200px solid #21242D;
+
+  transform: translate(250px, 173px) rotate(-100deg);
+  z-index:1;
+}
+
+.description {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.second {
+  margin-top: -1rem;
+}
+
+.text-about {
+  padding: 0 1rem 0 0;
+}
+
+.contact, .skills {
+  width: 30%;
+}
+
+.about-me, .work-experience {
+  width: 70%;
+}
+
+.work-row {
+  display: flex;
+  font-size: .7rem;
+  margin-bottom: 1rem;
+}
+
+.work-place {
+  width: 33%;
+}
+
+.responsibility {
+  width: 60%;
+}
+
+.time h3 {
+  font-size: .8rem;
+}
+
+.education-header {
+  display: flex;
+
+}
+
+.education-time {
+  width: 50px;
+}
+
+.education-place {
+  position: relative;
+  margin-left: 5px;
+}
+
+.education-place h3 {
+  font-size: .8rem;
+  width: 130px;
+}
+
+.education-place:before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 25px;
+  background-color: #404040;
+  position: absolute;
+  left: -10px;
+  top: 5px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.project-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.project {
+  width: 40%;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.links {
+  margin-top: -10px;
+  position: relative;
+}
+
+.view-link {
+  margin-right: 20px;
+}
+
+.view-link:after {
+  content: '';
+  width: 1px;
+  height: 14px;
+  display: block;
+  background-color: #404040;
+  position: absolute;
+  top: 5px;
+  left: 45px;
+}
+
+footer p {
+  margin-top: 1rem;
+}
+
+.shadow {
+/*   border-top: 20px solid transparent;
+  border-right: 330px solid rgba(140,40,40, .1); */
+  width: 0; 
+  height: 0; 
+  position: absolute;
+  top: 1133px;
+  border-width: 10px 330px 20px;
+  border-style: solid;
+  border-color: rgba(40,40,40, .1) rgba(40,40,40, .1) transparent;
+  z-index: -1;
+}
+
+
+.shadow:after {
+  content: '';
+  width: 20px;
+  height: 1090px;
+  background-color: rgba(40,40,40, .1);
+  position: absolute;
+  left: 330px;
+  bottom: -15px;
+  opacity: .3;
+}
+
