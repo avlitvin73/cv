@@ -23,5 +23,5 @@ buttonProjects.onclick = () => {
 
 window.addEventListener('resize', () => {
   const scaleFactor = window.innerWidth / wrapper.offsetWidth;
-  wrapper.style.transform = `scale(${scaleFactor * 0.8})`;
+  wrapper.style.transform = `scale(${scaleFactor})`;
 });
