@@ -4,6 +4,11 @@ const buttonProjects = document.querySelector('#projects')
 const blockAbout = document.querySelector('.description')
 const blockProjects = document.querySelector('.projects')
 
+const resizeWindow = () => {
+  const scaleFactor = window.innerWidth / wrapper.offsetWidth;
+  wrapper.style.transform = `scale(${scaleFactor})`;
+}
+
 blockProjects.style.display = 'none'
 
 buttonAboutMe.onclick = () => {
@@ -22,6 +27,7 @@ buttonProjects.onclick = () => {
 }
 
 window.addEventListener('resize', () => {
-  const scaleFactor = window.innerWidth / wrapper.offsetWidth;
-  wrapper.style.transform = `scale(${scaleFactor})`;
+  resizeWindow()
 });
+
+resizeWindow()
