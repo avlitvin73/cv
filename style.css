@@ -84,6 +84,11 @@ a {
   color: #404040;
 }
 
+.wrapper {
+  width: 700px;
+  transform-origin: top center;
+  margin: 0 auto;
+}
 .container {
   width: 595px;
 /*   height: 842px; */
@@ -277,7 +282,6 @@ footer p {
   width: 0; 
   height: 0; 
   position: absolute;
-  top: 1133px;
   border-width: 10px 330px 20px;
   border-style: solid;
   border-color: rgba(40,40,40, .1) rgba(40,40,40, .1) transparent;
