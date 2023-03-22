@@ -1,7 +1,9 @@
+const wrapper = document.querySelector('.wrapper'); 
 const buttonAboutMe = document.querySelector('#aboutMe')
 const buttonProjects = document.querySelector('#projects')
 const blockAbout = document.querySelector('.description')
 const blockProjects = document.querySelector('.projects')
+
 blockProjects.style.display = 'none'
 
 buttonAboutMe.onclick = () => {
@@ -18,3 +20,8 @@ buttonProjects.onclick = () => {
   blockAbout.style.top = '-300px'
   blockAbout.style.height = '0px'
 }
+
+window.addEventListener('resize', () => {
+  const scaleFactor = window.innerWidth / wrapper.offsetWidth;
+  wrapper.style.transform = `scale(${scaleFactor * 0.8})`;
+});
