@@ -18,6 +18,13 @@ nav a, nav div {
   cursor: pointer;
 }
 
+#download {
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 body {
   background-color: #E0E0E0;
   font-family: 'Nunito', sans-serif;
@@ -38,12 +45,12 @@ h3 {
 }
 
 p {
-  font-size: .8rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .phone-number {
-  font-size: .7rem;
+  font-size: .9rem;
 }
 
 ul {
@@ -53,7 +60,6 @@ ul {
 }
 
 li {
-  font-size: .8rem;
   margin-bottom: .3rem;
 }
 
@@ -90,7 +96,7 @@ a {
   margin: 0 auto;
 }
 .container {
-  width: 595px;
+  width: 695px;
 /*   height: 842px; */
   height: 989px; 
   background-color: #fff;
@@ -113,7 +119,7 @@ a {
   display: block;
   color: #000;
   width: 63%;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   position: absolute;
   left: 0;
 }
@@ -125,12 +131,12 @@ a {
 .photo {
   width: 270px;
   height: 270px;
-  background-image: url('photo.png');
+  background-image: url('photo.webp');
   background-size: cover;
   transform: scale(1.2, 1.2);
   position: relative;
-  right: -30px;
-  
+  right: -50px;
+  border-radius: 50%;
 }
 
 .photo:before {
@@ -165,6 +171,10 @@ a {
   width: 100%;
 }
 
+.education-description p {
+  font-size: .9rem;
+}
+
 .about {
   display: flex;
   flex-wrap: wrap;
@@ -189,12 +199,15 @@ a {
 
 .work-row {
   display: flex;
-  font-size: .7rem;
   margin-bottom: 1rem;
 }
 
 .work-place {
+  font-size: .9rem;
   width: 33%;
+}
+.responsibility {
+  font-size: .9rem;
 }
 
 .responsibility {

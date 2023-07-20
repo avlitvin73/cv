@@ -10,15 +10,15 @@
     <header>
       <nav>
         <div id="aboutMe">About Me</div>
-        <a href="./Aleksandr Litvin.pdf" title="CV" download="">Download CV</a>
+        <button id="download">Download</button>
         <div id="projects">Projects</div>
       </nav>
     </header>
     <div class="wrapper">
-    <div class="container">
+    <div id="cv" class="container">
       <section>
         <div class="personality">
-          <h1>I'm <strong>Aleksandr Litvin</strong>, a web and project designer from Moscow,</br></Russia> Russia</h1>
+          <h1>I'm <strong>Aleksandr Litvin</strong>,<br/> a web designer <br/>from Moscow,</br></Russia> Russia</h1>
           <div class="photo"></div>
           <div class="triangle"></div>
         </div>
@@ -48,7 +48,6 @@
               <h2>About Me</h2>
               <div class="text-about">
                 <p>I am a dedicated frontend programmer with strong proficiency in JavaScript, skilled in creating dynamic and engaging web applications that captivate users.</p>
-                <p>I am committed to delivering high-quality and user-friendly websites that exceed client expectations and leave a lasting impression.</p> 
                 <p>In addition, I am passionate about sharing my knowledge through teaching and mentoring, finding great pleasure in guiding young web development enthusiasts and always inspired by their growth and success.</p>
               </div>
                   
@@ -108,7 +107,16 @@
             <div class="cell">    
               <div class="education-header">
                 <div class="education-time time"><h3>Now 2022</h3> </div>
-                <div class="education-place"><h3>Javascript/Front-End Program </h3></div>
+                <div class="education-place"><h3>Interfaces Dev Yandex</h3></div>
+              </div>
+              <div class="education-description">
+                <p>Deepest Javascript, design patterns, e2e & unit tests, devops, algorithms, nodejs, clean code practices.</p>
+              </div>
+            </div>
+            <div class="cell">    
+              <div class="education-header">
+                <div class="education-time time"><h3>2021 2020</h3> </div>
+                <div class="education-place"><h3>Javascript/Front-End RSSchool </h3></div>
               </div>
               <div class="education-description">
                 <p>Advanced Javascript, Security, Testing, Agile, Networking, and web development tools.</p>
@@ -243,5 +251,5 @@ const reverseNum = function(num) {
     </div>
       
     <script src="script.js"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  </body>
 </html>
