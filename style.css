@@ -299,6 +299,7 @@ footer p {
   border-style: solid;
   border-color: rgba(40,40,40, .1) rgba(40,40,40, .1) transparent;
   z-index: -1;
+  transform: translateX(5%);
 }
 
 
@@ -308,7 +309,7 @@ footer p {
   height: 1090px;
   background-color: rgba(40,40,40, .1);
   position: absolute;
-  left: 330px;
+  left: 380px;
   bottom: -15px;
   opacity: .3;
 }

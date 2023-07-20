@@ -3,6 +3,7 @@ const buttonAboutMe = document.querySelector("#aboutMe");
 const buttonProjects = document.querySelector("#projects");
 const blockAbout = document.querySelector(".description");
 const blockProjects = document.querySelector(".projects");
+const shadow = document.querySelector(".shadow");
 
 const button = document.getElementById("download");
 
@@ -42,5 +43,7 @@ buttonProjects.onclick = () => {
 window.addEventListener("resize", () => {
   resizeWindow();
 });
+
+shadow.style.borderWidth = `10px 380px 20px`;
 
 resizeWindow();
