@@ -131,7 +131,7 @@ a {
 .photo {
   width: 270px;
   height: 270px;
-  background-image: url('/images/photo.webp');
+  background-image: url('cv//images/photo.webp');
   background-size: cover;
   transform: scale(1.2, 1.2);
   position: relative;
