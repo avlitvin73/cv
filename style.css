@@ -91,7 +91,7 @@ a {
 }
 
 .wrapper {
-  width: 700px;
+  width: 780px;
   transform-origin: top center;
   margin: 0 auto;
 }
@@ -299,7 +299,6 @@ footer p {
   border-style: solid;
   border-color: rgba(40,40,40, .1) rgba(40,40,40, .1) transparent;
   z-index: -1;
-  transform: translateX(5%);
 }
 
 
