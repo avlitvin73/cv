@@ -8,58 +8,7 @@
 <body>
 	<code>
 		<pre>
-			import { AppComponent } from './app.component';
-import { LoaderService } from './services/loader.service';
-import { NavigationService } from './services/navigation.service';
-import { of } from 'rxjs';
-
-describe('AppComponent', () => {
-    let component: AppComponent;
-    let loaderService: LoaderService;
-    let navService: NavigationService;
-
-    beforeEach(() => {
-        loaderService = { showLoader$: of(true), loaderText$: of('Loading...') } as LoaderService;
-        navService = { currentState$: of(EState.Start) } as NavigationService;
-        component = new AppComponent(loaderService, navService);
-    });
-
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
-    it('should initialize observables', () => {
-        expect(component.showLoader$).toBeInstanceOf(Observable);
-        expect(component.loaderText$).toBeInstanceOf(Observable);
-        expect(component.state$).toBeInstanceOf(Observable);
-        expect(component.showheader$).toBeInstanceOf(Observable);
-    });
-
-    it('should show header for states other than Finish', (done) => {
-        navService.currentState$ = of(EState.Start); // Example state
-        component.showheader$.subscribe(show => {
-            expect(show).toBeTrue();
-            done();
-        });
-    });
-    
-    it('should not show header for Finish state', (done) => {
-        navService.currentState$ = of(EState.Finish); // Finish state
-        component.showheader$.subscribe(show => {
-            expect(show).toBeFalse();
-            done();
-        });
-    });
-
-    it('should have LoaderService and NavigationService injected', () => {
-        expect(component['loaderService']).toBeTruthy();
-        expect(component['navService']).toBeTruthy();
-    });
-});
-
-		
-		
-		
+			
 		
 		
 		
