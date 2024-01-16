@@ -66,6 +66,57 @@ it('should add security markers to request body', () => {
 
   expect(response).toEqual(mockResponse);
 });
+
+
+
+
+			================
+import { createHttpFactory, HttpMethod, SpectatorHttp } from '@ngneat/spectator/jest';
+import { AuthInterceptor } from './auth.interceptor';
+import { SessionService } from '@services/session.service';
+import { of } from 'rxjs';
+
+describe('AuthInterceptor', () => {
+  let spectator: SpectatorHttp<AuthInterceptor>;
+  let sessionService: SessionService;
+
+  const createHttp = createHttpFactory({
+    service: AuthInterceptor,
+    providers: [
+      {
+        provide: SessionService,
+        useValue: {
+          load: jest.fn(() => 'token')
+        }
+      }
+    ],
+    mocks: [SessionService]
+  });
+
+  beforeEach(() => {
+    spectator = createHttp();
+    sessionService = spectator.inject(SessionService);
+    localStorage.setItem('SECURITY_WEB_GL', 'webgl');
+    localStorage.setItem('SECURITY_CANVAS', 'canvas');
+  });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  it('should add Authorization and securityMarkers headers to the request', () => {
+    spectator.service.intercept(spectator.get('/api'), {
+      handle: jest.fn(() => of(null))
+    }).subscribe();
+
+    const req = spectator.expectOne('/api', HttpMethod.GET);
+    expect(req.request.headers.get('Authorization')).toBe('Bearer token');
+    expect(req.request.body.securityMarkers).toEqual({
+      securitywebGL: 'webgl',
+      securityCanvas: 'canvas'
+    });
+  });
+});
 		</pre>
   
 
