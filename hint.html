@@ -7,98 +7,67 @@
 </head>
 <body>
 	<code>
-    import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { SessionService } from '@services/session.service';
-import { AuthInterceptor } from './auth.interceptor';
-import {
-    SECURITY_CANVAS,
-    SECURITY_WEB_GL,
-    ACCESS_TOKEN,
-    INTERCEPTOR_SKIP_HEADER,
-} from '../constants';
+		<pre>
+			it('should add authorization header with access token if skip header is not present', () => {
+  const accessToken = 'testToken';
+  spyOn(sessionService, 'load').mockReturnValue(accessToken);
 
-describe('AuthInterceptor', () => {
-    let interceptor: AuthInterceptor;
-    let httpMock: HttpTestingController;
-    let sessionService: SessionService;
+  let response: any = null;
+  interceptor.intercept(httpRequest, next).subscribe(res => {
+    response = res;
+  });
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [AuthInterceptor, SessionService],
-        });
-        interceptor = TestBed.inject(AuthInterceptor);
-        httpMock = TestBed.inject(HttpTestingController);
-        sessionService = TestBed.inject(SessionService);
-    });
+  const req = httpMock.expectOne(httpRequest.url);
+  expect(req.request.headers.has('Authorization')).toBeTrue();
+  expect(req.request.headers.get('Authorization')).toEqual(Bearer ${accessToken});
 
-    afterEach(() => {
-        httpMock.verify();
-    });
+  req.flush(mockResponse);
 
-    it('should add authorization header with access token if skip header is not present', () => {
-        const token = 'test-token';
-        spyOn(sessionService, 'load').and.returnValue(token);
-
-        const req = new HttpRequest<any>('GET', 'test-url');
-        const next: HttpHandler = {
-            handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-                expect(req.headers.get('Authorization')).toBe(Bearer ${token});
-                return new Observable();
-            },
-        };
-
-        interceptor.intercept(req, next);
-        const mockReq = httpMock.expectOne('test-url');
-        expect(mockReq.request.headers.get('Authorization')).toBe(Bearer ${token});
-        mockReq.flush({});
-    });
-
-    it('should not add authorization header if skip header is present', () => {
-        const token = 'test-token';
-        spyOn(sessionService, 'load').and.returnValue(token);
-
-        const req = new HttpRequest<any>('GET', 'test-url', null, { headers: { [INTERCEPTOR_SKIP_HEADER]: 'true' } });
-        const next: HttpHandler = {
-            handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-                expect(req.headers.get('Authorization')).toBeNull();
-                return new Observable();
-            },
-        };
-
-        interceptor.intercept(req, next);
-        const mockReq = httpMock.expectOne('test-url');
-        expect(mockReq.request.headers.get('Authorization')).toBeNull();
-        mockReq.flush({});
-    });
-
-    it('should add security markers to request body', () => {
-        localStorage.setItem(SECURITY_CANVAS, 'test-canvas');
-        localStorage.setItem(SECURITY_WEB_GL, 'test-webgl');
-
-        const req = new HttpRequest<any>('POST', 'test-url', { data: 'test-data' });
-        const next: HttpHandler = {
-            handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-                expect(req.body.securityMarkers).toEqual({
-                    securityCanvas: 'test-canvas',
-                    securitywebGL: 'test-webgl',
-                });
-                return new Observable();
-            },
-        };
-
-        interceptor.intercept(req, next);
-        const mockReq = httpMock.expectOne('test-url');
-        expect(mockReq.request.body.securityMarkers).toEqual({
-            securityCanvas: 'test-canvas',
-            securitywebGL: 'test-webgl',
-        });
-        mockReq.flush({});
-    });
+  expect(response).toEqual(mockResponse);
 });
+
+it('should not add authorization header if skip header is present', () => {
+  httpRequest = httpRequest.clone({
+    headers: new HttpHeaders({ [INTERCEPTOR_SKIP_HEADER]: 'true' })
+  });
+
+  let response: any = null;
+  spyOn(sessionService, 'load');
+  interceptor.intercept(httpRequest, next).subscribe(res => {
+    response = res;
+  });
+
+  const req = httpMock.expectOne(httpRequest.url);
+  expect(req.request.headers.has('Authorization')).toBeFalse();
+
+  req.flush(mockResponse);
+
+  expect(response).toEqual(mockResponse);
+});
+
+it('should add security markers to request body', () => {
+  spyOn(localStorage, 'getItem').and.callFake((key: string) => {
+    if (key === SECURITY_CANVAS || key === SECURITY_WEB_GL) {
+      return 'testMarker';
+    }
+    return null;
+  });
+
+  let response: any = null;
+  interceptor.intercept(httpRequest, next).subscribe(res => {
+    response = res;
+  });
+
+  const req = httpMock.expectOne(httpRequest.url);
+  const requestBody = JSON.parse(req.request.body);
+  expect(requestBody.securityMarkers).toEqual(['testMarker', 'testMarker']);
+
+  req.flush(mockResponse);
+
+  expect(response).toEqual(mockResponse);
+});
+		</pre>
+  
 
   </code>
 </body>
